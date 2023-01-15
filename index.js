@@ -1,6 +1,7 @@
 const { promisify } = require('util');
 const fs = require('fs');
 const convert = require('heic-convert');
+const resizePng  = require('./resize');
 const heicImages = './heicImages/';
 const imgNames = [];
 fs.readdirSync(heicImages).forEach( (file) => {
@@ -19,10 +20,8 @@ const main = async () => {
         buffer: inputBuffer, // the HEIC file buffer
         format: 'PNG',      // output format
       });
-      console.log(`image #${i} successfully converted`);
-      
-      await promisify(fs.writeFile)(`./resultImages/image-${i}.png`, outputBuffer);
-      console.log(`png image #${i} successfully saved`);
+
+      resizePng(outputBuffer, i);
     }
   } catch (error) {
     console.log(error);

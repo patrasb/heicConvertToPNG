@@ -6,6 +6,7 @@
   "dependencies": {
     "fs": "^0.0.1-security",
     "heic-convert": "^1.2.4",
+    "sharp": "^0.31.3",
     "util": "^0.12.5"
   },
   "devDependencies": {},
